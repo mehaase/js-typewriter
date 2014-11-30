@@ -231,7 +231,9 @@ Typewriter.prototype._typeTextAtIndex = function (text, index) {
     }
 
     // Type the character.
-    if (text.charAt(index) === "\b") {
+    var character = text.charAt(index);
+
+    if (character === "\b") {
         // This is a delete character: _remove_ the last character.
         var newLength = this._textNode.nodeValue.length - 1;
         this._textNode.nodeValue = this._textNode.nodeValue.substring(0, newLength);
@@ -240,7 +242,7 @@ Typewriter.prototype._typeTextAtIndex = function (text, index) {
     }
 
     if (this._characterCallback) {
-        this._characterCallback();
+        this._characterCallback(character);
     }
 
     // Schedule the next character.

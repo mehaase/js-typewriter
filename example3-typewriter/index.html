@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example 3: Typewriter</title>
+        <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+        <style>
+            body {
+                background-color:white;
+                color: black;
+                font-family: 'Special Elite', cursive;
+            }
+            #typewriter {
+                white-space: pre;
+            }
+        </style>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="../typewriter.js"></script>
+        <script src="./animate.js"></script>
+    </head>
+    <body>
+        <p id="typewriter"></p>
+
+        <script>
+        // Audio files are royalty-free from http://www.soundjay.com/typewriter-sounds.html.
+        var carriageReturnSound = new Audio('./typewriter-carriage-return.mp3');
+        var keystrokeSound = new Audio('./typewriter-keystroke.mp3');
+
+        function playSound (character) {
+            carriageReturnSound.pause();
+            keystrokeSound.pause();
+
+            if (character == "\n") {
+                carriageReturnSound.currentTime = 0;
+                carriageReturnSound.play();
+            } else if (character != " ") {
+                keystrokeSound.currentTime = 0;
+                keystrokeSound.play();
+            }
+        }
+
+        $(function () {
+            var typewriter = new Typewriter($("#typewriter"));
+            typewriter.setCaret("");
+            typewriter.setCaretPeriod(0);
+            typewriter.setDelay(500, 100);
+            typewriter.setCharacterCallback(playSound);
+            animate(typewriter);
+        });
+        </script>
+    </body>
+</html>
