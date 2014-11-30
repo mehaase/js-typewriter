@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example 1: Basic</title>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="../typewriter.js"></script>
+    </head>
+
+    <body>
+        <p id="typewriter"></p>
+
+
+        <script>
+        $(function () {
+            var typewriter = new Typewriter($("#typewriter"));
+            typewriter.typeText("Hello, world! This is a test... This is only a test.");
+        });
+        </script>
+    </body>
+</html>
