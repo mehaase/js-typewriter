@@ -37,7 +37,7 @@ Next we customize the caret. The caret will be an underscore character `_` inste
 
 Then we set the keystroke delay to average 100ms between keystrokes with up to 50ms random variance. So between each keystroke, there will be a random delay between 50ms and 150ms.
 
-The last line calls an animation function that is defined in [example2-termina/animate.js](./example2-terminal/animate.js). Let's take a look at that file.
+The last line calls an animation function that is defined in [example2-terminal/animate.js](./example2-terminal/animate.js). Let's take a look at that file.
 
 ```javascript
 function animate(typewriter) {
