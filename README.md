@@ -6,6 +6,8 @@ There is also a simple system for putting together more elaborate animations. Se
 
 # Example 1: Basic #
 
+[View Example 1 Demo…](https://rawgit.com/mehaase/js-typewriter/master/example1-basic/index.html)
+
 Getting started is very easy!
 
 Instantiate a `Typewriter` on an element in your page. In this case, I'm using a paragraph with the ID "typewriter". `Typewriter` supports both jQuery objects (seen here) and plain old DOM objects. Next, tell the `Typewriter` what text to display.
@@ -18,6 +20,8 @@ typewriter.typeText("Hello, world! This is a test... This is only a test.");
 The complete source for [Example 1](./example1-basic/index.html) is included in this repository.
 
 # Example 2: Terminal #
+
+[View Example 2 Demo…](https://rawgit.com/mehaase/js-typewriter/master/example2-terminal/index.html)
 
 This example shows how to construct a more elaborate series of animations by simulating a terminal.
 
@@ -80,6 +84,8 @@ The fourth step demonstrates two interesting features. First, the text includes 
 The other interesting feature in this step is the callback. Each step can have a callback triggered after it runs. Note that the callback runs _after_ the text finishes rendering but _before_ the delay. So in this case, the `Typewriter` would spend several seconds animating the text, write to the console immediately after the text animation, then wait another 1000 milliseconds before moving onto the next step.
 
 # Example 3: Typewriter #
+
+[View Example 3 Demo…](https://rawgit.com/mehaase/js-typewriter/master/example3-typewriter/index.html)
 
 At last, the eponymous example! This example introduces character callbacks: functions that are executed after each character is typed. This allows us to play an extremely annoying typewriter sound effect on each keystroke! Try not to faint with excitement.
 
