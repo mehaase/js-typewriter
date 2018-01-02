@@ -16,29 +16,46 @@
         <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="../typewriter.js"></script>
         <script src="./animate.js"></script>
+        <script src="./howler.min.js"></script>
     </head>
     <body>
+        <button id='playButton'>Play Animation</button>
+
         <p id="typewriter"></p>
 
         <script>
         // Audio files are royalty-free from http://www.soundjay.com/typewriter-sounds.html.
-        var carriageReturnSound = new Audio('./typewriter-carriage-return.mp3');
-        var keystrokeSound = new Audio('./typewriter-keystroke.mp3');
+        var carriageReturnSound = new Howl({
+            src: ['./typewriter-carriage-return.mp3']
+        });
+        var keystrokeSound = new Howl({
+            src: ['./typewriter-keystroke.mp3']
+        });
+        var currentSound = null;
 
         function playSound (character) {
+            var nextSound = null;
             carriageReturnSound.pause();
             keystrokeSound.pause();
 
             if (character == "\n") {
                 carriageReturnSound.currentTime = 0;
-                carriageReturnSound.play();
+                nextSound = carriageReturnSound;
             } else if (character != " ") {
                 keystrokeSound.currentTime = 0;
-                keystrokeSound.play();
+                nextSound = keystrokeSound;
+            }
+
+            if (nextSound != null) {
+                if (currentSound != null) {
+                    currentSound.stop();
+                }
+                currentSound = nextSound;
+                currentSound.play();
             }
         }
 
-        $(function () {
+        $('#playButton').click(function () {
             var typewriter = new Typewriter($("#typewriter"));
             typewriter.setCaret("");
             typewriter.setCaretPeriod(0);
